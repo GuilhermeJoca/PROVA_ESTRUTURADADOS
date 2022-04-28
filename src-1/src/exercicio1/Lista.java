@@ -14,16 +14,16 @@ public class Lista {
 	}
 	
 	//esse método deverá ser implementado de acordo com o enunciado do exercício
-	private void inserirPrioridade(No aux) {
+	private void inserirPrioridade(No auxPrioridade) {
 			
-		if(aux.cor.equals("amarelo")){
-			if(inicio.numero > aux.numero){
+		if(auxPrioridade.cor.equals("amarelo")){
+			if(inicio.numero > auxPrioridade.numero){
 				
-				aux.prox = inicio;
-				inicio = aux;
+				auxPrioridade.prox = inicio;
+				inicio = auxPrioridade;
 			} else{
-				aux.prox = inicio.prox;
-				inicio.prox = aux;
+				auxPrioridade.prox = inicio.prox;
+				inicio.prox = auxPrioridade;
 				
 			}
 			

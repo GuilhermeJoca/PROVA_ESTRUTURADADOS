@@ -7,41 +7,42 @@ public class Lista {
 	// método para inserir um elemento na lista.
 	// a inserção deve manter a lista ordenada (ordem crescente)
 	public void inserir(int dado) {
-		No aux = new No(dado);
-		No aux2 = inicio;
+		No auxInserir = new No(dado);
+		
+		No aut = inicio;
 
-		if(inicio == null){//sem elemento
-			inicio = aux;
-			fim = aux;
-		} else if (inicio == fim){//um elemento
-			if(aux.dado > fim.dado){ //maior que o elemento
-				fim.dir = aux;
-				aux.esq = fim;
-				fim = aux;
-			} else { //menor que o elemento
-				fim.esq = aux;
-				aux.dir = fim;
-				inicio = aux;
+		if(inicio == null){
+			inicio = auxInserir;
+			fim = auxInserir;
+		} else if (inicio == fim){
+			if(auxInserir.dado > fim.dado){ 
+				fim.dir = auxInserir;
+				auxInserir.esq = fim;
+				fim = auxInserir;
+			} else { 
+				fim.esq = auxInserir;
+				auxInserir.dir = fim;
+				inicio = auxInserir;
 			}
-		} else {//mais que um
-			if(aux.dado > fim.dado){ //maior que o ultimo
-				fim.dir = aux;
-				aux.esq = fim;
-				fim = aux;
-			} else if (aux.dado < inicio.dado) {//menor que o primeiro
-				inicio.esq = aux;
-				aux.dir = inicio;
-				inicio = aux;
+		} else {
+			if(auxInserir.dado > fim.dado){ 
+				fim.dir = auxInserir;
+				auxInserir.esq = fim;
+				fim = auxInserir;
+			} else if (auxInserir.dado < inicio.dado) {
+				inicio.esq = auxInserir;
+				auxInserir.dir = inicio;
+				inicio = auxInserir;
 			} else {
-				while(aux2 != null){
-					if (aux.dado <= aux2.dir.dado && aux.dado >= aux2.dado){
-						aux.esq = aux2;
-						aux2.dir.esq = aux;
-						aux.dir = aux2.dir;
-						aux2.dir = aux;
+				while(aut != null){
+					if (auxInserir.dado <= aut.dir.dado && auxInserir.dado >= aut.dado){
+						auxInserir.esq = aut;
+						aut.dir.esq = auxInserir;
+						auxInserir.dir = aut.dir;
+						aut.dir = auxInserir;
 						break;
 					}
-					aux2 = aux2.dir;
+					aut = aut.dir;
 				}
 			}
 		}
