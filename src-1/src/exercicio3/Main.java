@@ -40,8 +40,10 @@ public class Main {
 				break;
 			}
 		}
-		aut = lista.inicio;
-		lista.inicio = lista.fim;
-		lista.fim = aut;
+		
+		
+				aut = lista.inicio;
+				lista.inicio = lista.fim;
+				lista.fim = aut;
 	}
 }
