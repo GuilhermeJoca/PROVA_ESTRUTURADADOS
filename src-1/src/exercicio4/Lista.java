@@ -8,31 +8,33 @@ public class Lista {
 	// a inserção deve manter a lista ordenada (ordem crescente)
 	public void inserir(int dado) {
 		No aux = new No(dado);
-		No aux2 = inicio;
+		No auz = inicio;
 
-		if(inicio == null){//sem elemento
+		if(inicio == null){ // sem elemento
 			inicio = aux;
 			fim = aux;
-		} else {//> 1 elemento
-			if(aux.dado >= fim.dado){ //maior ou igual que o ultimo
-				fim.dir = aux;
-				aux.esq = fim;
-				fim = aux;
-			} else if (aux.dado < inicio.dado) {//menor que o primeiro
+		} else { // > 1 elemento
+			if(aux.dado < inicio.dado){ // maior ou igual que o ultimo
 				inicio.esq = aux;
 				aux.dir = inicio;
 				inicio = aux;
+			} else if (aux.dado >= fim.dado) { // menor que o primeiro
+				fim.dir = aux;
+				aux.esq = fim;
+				fim = aux;
 			} else {
-				while(aux2 != null){ //entre 2 elementos
-					if (aux.dado <= aux2.dir.dado && aux.dado >= aux2.dado){
-						aux.esq = aux2;
-						aux2.dir.esq = aux;
-						aux.dir = aux2.dir;
-						aux2.dir = aux;
+				while(auz != null){ // entre 2 elementos
+					if (aux.dado >= auz.dado && aux.dado <= auz.dir.dado){
+						aux.esq = auz;
+						auz.dir.esq = aux;
+						aux.dir = auz.dir;
+						auz.dir = aux;
+						
 						break;
 					}
-					aux2 = aux2.dir;
+					auz = auz.dir;
 				}
+				
 			}
 		}
 	}
